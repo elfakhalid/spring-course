@@ -1,5 +1,6 @@
 package com.khalid.customer;
 
+import com.khalid.exceptions.ResourceNotFound;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,6 @@ public class CustomerService {
 
     public Customer getCustomer(Integer id){
         return customerDAO.selectCustomer(id).
-                orElseThrow(()->new IllegalArgumentException("customer with id [%s] not found".formatted(id)));
+                orElseThrow(()->new ResourceNotFound("customer with id [%s] not found".formatted(id)));
     }
 }

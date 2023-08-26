@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    container_name: postgres_exercise
+    image: postgres:14.1
+    environment:
+      POSTGRES_USER: khalid
+      POSTGRES_PASSWORD: khalid
+      PGDATA: /data/exercise/postgres
+    volumes:
+      - db:/data/postgres
+    ports:
+      - "5332:5432"
+    networks:
+      - db
+    restart: unless-stopped
+networks:
+  db:
+    driver: bridge
+volumes:
+  db:
